@@ -2032,7 +2032,7 @@ IOATAController::softResetBus( bool doATAPI )
 	// loop for up to 31 seconds following a reset to allow 
 	// drives to come on line. Most devices take 50-100ms, a sleeping drive 
 	// may need to spin up and touch media to respond. This may take several seconds.
-	for( int i = 0; i < 100; i++)
+	for( int i = 0; i < 50; i++)
 	{
 		
 		// read the status register - helps deal with devices which errantly 
@@ -2262,7 +2262,7 @@ IOATAController::scanForDrives( void )
 	
 	// wait for a not busy bus
 	// should be ready, but some devices may be slow to wake or spin up.
-	for( int loopMils = 0; milsSpent < 100; loopMils++ )
+	for( int loopMils = 0; milsSpent < 50; loopMils++ )
 	{
 		OSSynchronizeIO();
 		status = *_tfStatusCmdReg;
@@ -2274,7 +2274,7 @@ IOATAController::scanForDrives( void )
 	}
 
 	// spun on BSY for too long, declare bus empty
-	if( ! (milsSpent < 100) )
+	if( ! (milsSpent < 50) )
 		goto AllDone;
 		
 	
@@ -2285,7 +2285,7 @@ IOATAController::scanForDrives( void )
 	{
 
 		// wait for a not busy bus
-		for( int loopMils = 0; milsSpent < 100; loopMils++ )
+		for( int loopMils = 0; milsSpent < 50; loopMils++ )
 		{
 			// write the selection bit
 			OSSynchronizeIO();
@@ -2304,7 +2304,7 @@ IOATAController::scanForDrives( void )
 		}
 
 		// spun on BSY too long, probably bad device
-		if( ! (milsSpent < 100) )
+		if( ! (milsSpent < 50) )
 			goto AllDone;
 
 		// check for ATAPI device signature first
