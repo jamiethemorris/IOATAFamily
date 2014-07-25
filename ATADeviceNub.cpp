@@ -34,7 +34,7 @@
 #include "ATADeviceNub.h"
 #include "IOATADevConfig.h"
 
-#include <IOKit/IOSyncer.h>
+#include "IOSyncer.h"
 
 enum{
 
