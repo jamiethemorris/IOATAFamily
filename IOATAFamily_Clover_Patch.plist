@@ -1,0 +1,22 @@
+<key>KernelAndKextPatches</key>
+	<dict>
+		<key>AppleRTC</key>
+		<false/>
+		<key>KextsToPatch</key>
+		<array>
+			<dict>
+				<key>Comment</key>
+				<string>IOATAFamily Faster Boot</string>
+				<key>Find</key>
+				<data>
+				gfscDA==
+				</data>
+				<key>Name</key>
+				<string>IOATAFamily</string>
+				<key>Replace</key>
+				<data>
+				gfsyAA==
+				</data>
+			</dict>			
+		</array>
+	</dict>
